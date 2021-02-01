@@ -2,6 +2,7 @@ package com.example.myweatherapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myweatherapp.data.service.WeatherService
 import com.example.myweatherapp.databinding.ActivityMainBinding
 import com.example.myweatherapp.mvp.contract.MyWeatherAppContract
 import com.example.myweatherapp.mvp.model.MyWeatherAppModel
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = MyWeatherAppPresenter(MyWeatherAppModel(), MyWeatherAppView(this,binding))
+        presenter = MyWeatherAppPresenter(MyWeatherAppModel(WeatherService()), MyWeatherAppView(this, binding))
         presenter.getWeatherForecast()
 
     }

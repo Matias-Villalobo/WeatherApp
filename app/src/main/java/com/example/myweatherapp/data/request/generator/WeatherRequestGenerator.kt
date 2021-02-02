@@ -4,7 +4,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class WeatherRequestGenerator {
     private val httpClient: OkHttpClient = OkHttpClient.Builder().build()
     private val builder = Retrofit.Builder()
@@ -15,6 +14,6 @@ class WeatherRequestGenerator {
         builder.client(httpClient).build().create(serviceClass)
 
     companion object {
-        private const val BASE_URL = "api.openweathermap.org/data/2.5/"
+        private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
     }
 }

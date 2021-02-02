@@ -13,4 +13,8 @@ class MyWeatherAppView(activity: Activity, private var binding: ActivityMainBind
     override fun showData(data:WeatherResponse) {
         Toast.makeText(context, R.string.conection_established, Toast.LENGTH_SHORT).show()
     }
+
+    override fun showError() {
+        TODO("Not yet implemented")
+    }
 }

@@ -11,6 +11,7 @@ interface MyWeatherAppContract {
 
     interface MyWeatherAppView {
         fun showData(data:WeatherResponse)
+        fun showError()
     }
 
     interface MyWeatherAppPresenter {

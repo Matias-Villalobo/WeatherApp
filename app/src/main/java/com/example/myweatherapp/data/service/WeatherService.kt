@@ -1,6 +1,7 @@
 package com.example.myweatherapp.data.service
 
 import android.util.Log
+import com.example.myweatherapp.BuildConfig
 import com.example.myweatherapp.data.request.generator.WeatherRequestGenerator
 import com.example.myweatherapp.data.service.api.WeatherApi
 import com.example.myweatherapp.data.service.response.WeatherResponse
@@ -13,7 +14,7 @@ class WeatherService {
     fun getWeekWeather(cityWeather: String): Observable<WeatherResponse> {
         return Observable.create { subscriber ->
             val callResponse =
-                api.createService(WeatherApi::class.java).getForecast(cityWeather, APPID, UNITS)
+                api.createService(WeatherApi::class.java).getForecast(cityWeather, BuildConfig.APPID, UNITS)
             val response = callResponse.execute()
             if (response.isSuccessful) {
                 Log.d(TAG, response.body().toString())
@@ -26,7 +27,6 @@ class WeatherService {
 
     companion object {
         private const val UNITS = "metric"
-        private const val APPID = "16ed760ab156214729d1e276a01e9653"
         private const val TAG = "WeatherResponse"
     }
 }

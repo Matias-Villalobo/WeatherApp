@@ -1,13 +1,17 @@
 package com.example.myweatherapp.mvp.contract
 
+import com.example.myweatherapp.data.service.response.WeatherResponse
+import io.reactivex.rxjava3.core.Observable
+
 interface MyWeatherAppContract {
 
     interface MyWeatherAppModel {
-        fun getData()
+        fun getData(city: String): Observable<WeatherResponse>
     }
 
     interface MyWeatherAppView {
-        fun showData()
+        fun showData(data:WeatherResponse)
+        fun showError()
     }
 
     interface MyWeatherAppPresenter {

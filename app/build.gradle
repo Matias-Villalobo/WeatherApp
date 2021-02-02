@@ -16,8 +16,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "APPID", APPID)
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "APPID","\"16ed760ab156214729d1e276a01e9653\"")
+        testInstrumentationRunner "androidx.test.runer.AndroidJUnitRunner"
     }
 
 

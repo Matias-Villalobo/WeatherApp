@@ -6,5 +6,3 @@ data class WeatherDescription(
     val id: Int,
     val typeOfWeather: String
 )
-
-

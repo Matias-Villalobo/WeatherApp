@@ -1,4 +1,4 @@
-package com.example.myweatherapp.data.request.generator
+package com.example.myweatherapp.data.service.request.generator
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

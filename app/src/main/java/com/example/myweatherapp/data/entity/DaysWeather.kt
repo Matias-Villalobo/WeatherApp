@@ -5,4 +5,3 @@ data class DaysWeather(
     val temperature: Temperature,
     val weatherDescription: List<WeatherDescription>
 )
-

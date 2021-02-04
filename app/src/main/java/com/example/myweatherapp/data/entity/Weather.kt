@@ -1,5 +1,5 @@
 package com.example.myweatherapp.data.entity
 
 data class Weather(
-    val data: List<Data>
+    val data: List<DaysWeather>
 )

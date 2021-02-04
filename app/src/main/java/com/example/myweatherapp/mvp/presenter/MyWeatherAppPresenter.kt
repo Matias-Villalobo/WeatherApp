@@ -14,8 +14,9 @@ class MyWeatherAppPresenter(
         model.getData(CITY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ data -> view.showData(data) },{view.showError()})
+            .subscribe({ data -> view.showData(data) }, { view.showError() })
     }
+
     companion object {
         private const val CITY = "Tandil"
     }

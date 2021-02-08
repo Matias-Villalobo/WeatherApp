@@ -2,33 +2,27 @@ package com.example.myweatherapp.data.mapper
 
 import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.data.entity.Temperature
-import com.example.myweatherapp.data.entity.Weather
 import com.example.myweatherapp.data.entity.WeatherDescription
 import com.example.myweatherapp.data.service.response.WeatherDataResponse
 import com.example.myweatherapp.data.service.response.WeatherFullDescriptionResponse
-import com.example.myweatherapp.data.service.response.WeatherResponse
 import com.example.myweatherapp.data.service.response.WeatherTemperatureResponse
+import java.text.SimpleDateFormat
+import java.util.*
 
-fun WeatherResponse.transform(): Weather = Weather(this.list.transformData())
+private val formatJson = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+private val formatApp = SimpleDateFormat("EEEE, MM/dd", Locale.ENGLISH)
 
-fun List<WeatherDataResponse>.transformData(): List<DaysWeather> = this.map {
-    it.mapToDaysWeather()
-}
+private fun WeatherTemperatureResponse.transformMain() = Temperature(feelsLike, temp, tempMax, tempMin)
 
-fun WeatherDataResponse.mapToDaysWeather(): DaysWeather = DaysWeather(
-    this.date,
-    this.main.transformMain(),
-    (this.weatherFullDescription).transformWeatherDescription()
+private fun WeatherFullDescriptionResponse.mapToWeatherDescription() = WeatherDescription(description, icon, id, main)
+
+private fun List<WeatherFullDescriptionResponse>.transformWeatherDescription(): List<WeatherDescription> =
+    this.map { it.mapToWeatherDescription() }
+
+private fun WeatherDataResponse.mapToWeatherData(): DaysWeather = DaysWeather(
+    formatApp.format(formatJson.parse(date)),
+    main.transformMain(),
+    weatherFullDescription.transformWeatherDescription()
 )
 
-fun WeatherTemperatureResponse.transformMain(): Temperature =
-    Temperature(this.feelsLike, this.temp, this.tempMax, this.tempMin)
-
-fun WeatherFullDescriptionResponse.mapToweather(): WeatherDescription = WeatherDescription(
-    this.description, this.icon, this.id, this.main
-)
-
-fun List<WeatherFullDescriptionResponse>.transformWeatherDescription(): List<WeatherDescription> =
-    this.map {
-        it.mapToweather()
-    }
+fun List<WeatherDataResponse>.mapToWeatherDataList(): List<DaysWeather> = this.map { it.mapToWeatherData() }

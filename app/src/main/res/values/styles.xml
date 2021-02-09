@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MainScreenTitleStyle">
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/activity_main_text_view_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@color/teal_200</item>
+    </style>
+
+    <style name="ActualTempStyle" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/actual_temp_text_size</item>
+    </style>
+
+    <style name="Sensation" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/actual_sensation_text_size</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
+
+    <style name="BackgroundItemStyle">
+        <item name="cardBackgroundColor">@color/teal_700</item>
+        <item name="cardCornerRadius">@dimen/card_view_corner_radius</item>
+        <item name="android:layout_margin">@dimen/card_view_margin</item>
+        <item name="cardElevation">@dimen/card_view_elevation</item>
+    </style>
+</resources>

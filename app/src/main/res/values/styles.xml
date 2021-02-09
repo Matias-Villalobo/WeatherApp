@@ -5,6 +5,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="OtherTextStyle">
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/activity_main_text_view_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@color/teal_200</item>
+    </style>
+
     <style name="ActualTempStyle" parent="BaseTextStyle">
         <item name="android:textSize">@dimen/actual_temp_text_size</item>
     </style>

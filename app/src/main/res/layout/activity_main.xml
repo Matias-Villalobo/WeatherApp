@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/TextView_Title"
-        style="@style/OtherTextStyle"
+        style="@style/MainScreenTitleStyle"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent" />
 

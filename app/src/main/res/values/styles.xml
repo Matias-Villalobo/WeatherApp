@@ -5,7 +5,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="OtherTextStyle">
+    <style name="MainScreenTitleStyle">
         <item name="android:textStyle">italic</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/activity_main_text_view_height</item>

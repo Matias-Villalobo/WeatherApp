@@ -19,10 +19,7 @@ class WeatherService {
                     .getForecast(cityWeather, BuildConfig.APPID, UNITS)
             val response = callResponse.execute()
             if (response.isSuccessful) {
-                //Log.d(TAG, response.body().toString())
-                response.body()?.list?.filter { it.date.contains(HOUR) }?.let {
-                    subscriber.onNext(it.mapToWeatherDataList())
-                }
+                response.body()?.list?.mapToWeatherDataList()?.let { subscriber.onNext(it) }
             } else {
                 subscriber.onError(Throwable(response.message()))
             }
@@ -35,5 +32,3 @@ class WeatherService {
         private const val HOUR = "12:00:00"
     }
 }
-
-

@@ -14,7 +14,9 @@ class MyWeatherAppPresenter(
         model.getData(CITY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ data -> view.showData(data) }, { view.showError() })
+            .subscribe(
+                { forecasts -> view.showData(model.getDataAllDays(forecasts))},
+                { view.showError() })
     }
 
     companion object {

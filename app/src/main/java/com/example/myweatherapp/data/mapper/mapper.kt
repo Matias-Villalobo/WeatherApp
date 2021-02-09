@@ -7,7 +7,8 @@ import com.example.myweatherapp.data.service.response.WeatherDataResponse
 import com.example.myweatherapp.data.service.response.WeatherFullDescriptionResponse
 import com.example.myweatherapp.data.service.response.WeatherTemperatureResponse
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
+
 
 private val formatJson = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
 private val formatApp = SimpleDateFormat("EEEE, MM/dd", Locale.ENGLISH)

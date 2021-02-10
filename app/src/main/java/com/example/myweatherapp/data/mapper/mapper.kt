@@ -10,8 +10,11 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 
-private val formatJson = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
-private val formatApp = SimpleDateFormat("EEEE, MM/dd", Locale.ENGLISH)
+val formatJson = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+val formatApp = SimpleDateFormat("EEEE, MM/dd", Locale.ENGLISH)
+val daysFormat = SimpleDateFormat("yyyy-MM-dd")
+val hoursFormat = SimpleDateFormat("HH:mm")
+const val EMPTY_STRING = ""
 
 private fun WeatherTemperatureResponse.transformMain() = Temperature(feelsLike, temp, tempMax, tempMin)
 
@@ -21,7 +24,7 @@ private fun List<WeatherFullDescriptionResponse>.transformWeatherDescription(): 
     this.map { it.mapToWeatherDescription() }
 
 private fun WeatherDataResponse.mapToWeatherData(): DaysWeather = DaysWeather(
-    formatApp.format(formatJson.parse(date)),
+    date,
     main.transformMain(),
     weatherFullDescription.transformWeatherDescription()
 )

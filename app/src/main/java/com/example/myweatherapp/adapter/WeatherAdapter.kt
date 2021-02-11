@@ -10,7 +10,7 @@ import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.databinding.WeatherFragmentBinding
 import com.example.myweatherapp.utils.WeatherStringUtils
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 interface ItemClicked {
     fun weatherClicked(date: String)

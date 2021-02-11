@@ -9,7 +9,7 @@ import com.example.myweatherapp.adapter.ItemClicked
 import com.example.myweatherapp.adapter.WeatherAdapter
 import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.databinding.ActivityMainBinding
-import com.example.myweatherapp.fragment.WeatherFragDetail
+import com.example.myweatherapp.fragment.WeatherFragmentDetail
 import com.example.myweatherapp.mvp.contract.MyWeatherAppContract
 
 class MyWeatherAppView(activity: Activity, private var binding: ActivityMainBinding) :
@@ -26,7 +26,7 @@ class MyWeatherAppView(activity: Activity, private var binding: ActivityMainBind
     }
 
     override fun showFragmentDataDetails(date: String, weather: List<DaysWeather>) {
-        WeatherFragDetail.newInstance(date, weather as ArrayList<DaysWeather>)
+        WeatherFragmentDetail.newInstance(date, weather as ArrayList<DaysWeather>)
             .show(
                 (context as FragmentActivity).supportFragmentManager,
                 context?.getString(R.string.weather_fragment_more_info)

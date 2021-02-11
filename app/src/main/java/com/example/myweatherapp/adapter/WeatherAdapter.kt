@@ -7,13 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myweatherapp.R
 import com.example.myweatherapp.data.entity.DaysWeather
-import com.example.myweatherapp.databinding.WeatherFragBinding
-import com.example.myweatherapp.utils.formatJson
-import com.example.myweatherapp.utils.hoursFormat
-import com.example.myweatherapp.utils.formatApp
-import com.example.myweatherapp.utils.FORMAT
-import com.example.myweatherapp.utils.URL
-
+import com.example.myweatherapp.databinding.WeatherFragmentBinding
+import com.example.myweatherapp.utils.WeatherDatesUtils.formatSimpleDate
+import com.example.myweatherapp.utils.WeatherDatesUtils.formatMilitaryTime
+import com.example.myweatherapp.utils.WeatherDatesUtils.formatHoursMinutes
 
 interface ItemClicked {
     fun weatherClicked(date: String)
@@ -27,7 +24,8 @@ class WeatherAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.weather_frag, parent, false), item
+            LayoutInflater.from(parent.context).inflate(R.layout.weather_fragment, parent, false),
+            item
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -39,7 +37,7 @@ class WeatherAdapter(
 
     class ViewHolder(itemView: View, private val item: ItemClicked?) :
         RecyclerView.ViewHolder(itemView) {
-        private val binding = WeatherFragBinding.bind(itemView)
+        private val binding = WeatherFragmentBinding.bind(itemView)
 
         fun bind(weatherItem: DaysWeather) {
             binding.apply {
@@ -56,9 +54,10 @@ class WeatherAdapter(
                         )
                     }"
                 if (item == null) {
-                    date.text = hoursFormat.format(formatJson.parse(weatherItem.date))
+                    date.text =
+                        formatHoursMinutes.format(formatMilitaryTime.parse(weatherItem.date))
                 } else {
-                    date.text = formatApp.format(formatJson.parse(weatherItem.date))
+                    date.text = formatSimpleDate.format(formatMilitaryTime.parse(weatherItem.date))
                 }
                 Glide.with(itemView.context)
                     .load("$URL${weatherItem.weatherDescription.first().icon}$FORMAT")
@@ -66,5 +65,10 @@ class WeatherAdapter(
                 cardviewWeatherFrag.setOnClickListener { item?.weatherClicked(weatherItem.date) }
             }
         }
+    }
+
+    companion object {
+        private const val URL = "http://openweathermap.org/img/wn/"
+        private const val FORMAT = "@2x.png"
     }
 }

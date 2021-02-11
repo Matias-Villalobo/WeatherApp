@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myweatherapp.R
 import com.example.myweatherapp.adapter.WeatherAdapter
 import com.example.myweatherapp.data.entity.DaysWeather
-import com.example.myweatherapp.databinding.WeatherFragInDetailBinding
+import com.example.myweatherapp.databinding.WeatherFragmentInDetailBinding
 import com.example.myweatherapp.mvp.contract.MyWeatherAppDetailContract
 
 class MyWeatherAppDetailView(
     fragment: DialogFragment,
-    private val binding: WeatherFragInDetailBinding
+    private val binding: WeatherFragmentInDetailBinding
 ) : MyWeatherAppDetailContract.View,
     FragmentView(fragment) {
 

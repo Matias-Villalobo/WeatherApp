@@ -12,7 +12,7 @@ class MyWeatherAppPresenter(
     MyWeatherAppContract.MyWeatherAppPresenter {
 
     override fun getWeatherForecast(item: ItemClicked) {
-        model.getData(com.example.myweatherapp.utils.CITY)
+        model.getData(CITY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -22,5 +22,9 @@ class MyWeatherAppPresenter(
 
     override fun weatherDayClicked(date: String) {
         view.showFragmentDataDetails(date, model.weekWeatherList)
+    }
+
+    companion object {
+        const val CITY = "Tandil"
     }
 }

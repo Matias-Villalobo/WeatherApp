@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MyWeatherApp</string>
-    <string name="conection_established">"The conection with the server has been established"</string>
-    <string name="conection_not_established">"Can not conect with the server"</string>
+    <string name="conection_established">The conection with the server has been established</string>
+    <string name="conection_not_established">Can not conect with the server</string>
     <string name="celsius">°C</string>
-    <string name="real_feel">"Sensation:"</string>
-    <string name="weather_fragment_more_info">"More information about the weather"</string>
+    <string name="real_feel">Sensation:</string>
+    <string name="weather_fragment_more_info">More information about the weather</string>
 </resources>

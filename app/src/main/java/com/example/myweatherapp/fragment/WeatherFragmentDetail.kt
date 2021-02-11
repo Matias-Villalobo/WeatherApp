@@ -6,23 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.myweatherapp.data.entity.DaysWeather
-import com.example.myweatherapp.databinding.WeatherFragInDetailBinding
+import com.example.myweatherapp.databinding.WeatherFragmentInDetailBinding
 import com.example.myweatherapp.mvp.contract.MyWeatherAppDetailContract
 import com.example.myweatherapp.mvp.model.MyWeatherAppDetailModel
 import com.example.myweatherapp.mvp.presenter.MyWeatherAppDetailPresenter
 import com.example.myweatherapp.mvp.view.MyWeatherAppDetailView
-import com.example.myweatherapp.utils.formatApp
-import com.example.myweatherapp.utils.formatJson
+import com.example.myweatherapp.utils.WeatherDatesUtils.formatSimpleDate
+import com.example.myweatherapp.utils.WeatherDatesUtils.formatMilitaryTime
+import com.example.myweatherapp.utils.WeatherStringUtils.EMPTY_STRING
+import kotlin.collections.ArrayList
 
-class WeatherFragDetail : DialogFragment() {
-    private lateinit var binding: WeatherFragInDetailBinding
+class WeatherFragmentDetail : DialogFragment() {
+    private lateinit var binding: WeatherFragmentInDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = WeatherFragInDetailBinding.inflate(inflater, container, false)
+        binding = WeatherFragmentInDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,27 +36,31 @@ class WeatherFragDetail : DialogFragment() {
                 MyWeatherAppDetailView(this, binding)
             )
         presenter.retrieveWeather(
-            arguments?.getString(DATE) ?: com.example.myweatherapp.utils.EMPTY_STRING,
+            arguments?.getString(DATE) ?: EMPTY_STRING,
             arguments?.getSerializable(LIST_WEATHER) as ArrayList<DaysWeather>
         )
         bindViews()
     }
 
     private fun bindViews() {
-        binding.fragmentDate.text = formatApp.format(formatJson.parse(arguments?.getString(DATE)))
+        binding.fragmentDate.text =
+            formatSimpleDate.format(formatMilitaryTime.parse(arguments?.getString(DATE)))
         binding.buttonClose.setOnClickListener { dismiss() }
     }
 
     companion object {
         private const val DATE = "date"
         private const val LIST_WEATHER = "list_weather"
-        fun newInstance(date: String, weatherComplete: ArrayList<DaysWeather>): WeatherFragDetail {
+        fun newInstance(
+            date: String,
+            weatherComplete: ArrayList<DaysWeather>
+        ): WeatherFragmentDetail {
             val args = Bundle()
             args.apply {
                 putString(DATE, date)
                 putSerializable(LIST_WEATHER, weatherComplete)
             }
-            val fragment = WeatherFragDetail()
+            val fragment = WeatherFragmentDetail()
             fragment.arguments = args
             return fragment
         }

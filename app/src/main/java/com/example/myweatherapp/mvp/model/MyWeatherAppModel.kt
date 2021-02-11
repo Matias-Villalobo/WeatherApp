@@ -3,6 +3,7 @@ package com.example.myweatherapp.mvp.model
 import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.data.service.WeatherService
 import com.example.myweatherapp.mvp.contract.MyWeatherAppContract
+import com.example.myweatherapp.utils.HOUR
 import io.reactivex.rxjava3.core.Observable
 
 class MyWeatherAppModel(private val weatherService: WeatherService) :
@@ -18,8 +19,5 @@ class MyWeatherAppModel(private val weatherService: WeatherService) :
         return forecasts.filter {
             it.date.contains(HOUR)
         }
-    }
-    companion object {
-        private const val HOUR = "12:00:00"
     }
 }

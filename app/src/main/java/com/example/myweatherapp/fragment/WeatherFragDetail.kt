@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.myweatherapp.data.entity.DaysWeather
-import com.example.myweatherapp.data.mapper.EMPTY_STRING
-import com.example.myweatherapp.data.mapper.formatApp
-import com.example.myweatherapp.data.mapper.formatJson
 import com.example.myweatherapp.databinding.WeatherFragInDetailBinding
 import com.example.myweatherapp.mvp.contract.MyWeatherAppDetailContract
 import com.example.myweatherapp.mvp.model.MyWeatherAppDetailModel
 import com.example.myweatherapp.mvp.presenter.MyWeatherAppDetailPresenter
 import com.example.myweatherapp.mvp.view.MyWeatherAppDetailView
+import com.example.myweatherapp.utils.formatApp
+import com.example.myweatherapp.utils.formatJson
 
 class WeatherFragDetail : DialogFragment() {
     private lateinit var binding: WeatherFragInDetailBinding
@@ -35,7 +34,7 @@ class WeatherFragDetail : DialogFragment() {
                 MyWeatherAppDetailView(this, binding)
             )
         presenter.retrieveWeather(
-            arguments?.getString(DATE) ?: EMPTY_STRING,
+            arguments?.getString(DATE) ?: com.example.myweatherapp.utils.EMPTY_STRING,
             arguments?.getSerializable(LIST_WEATHER) as ArrayList<DaysWeather>
         )
         bindViews()
@@ -61,4 +60,3 @@ class WeatherFragDetail : DialogFragment() {
         }
     }
 }
-

@@ -6,6 +6,7 @@ import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.data.mapper.mapToWeatherDataList
 import com.example.myweatherapp.data.service.request.generator.WeatherRequestGenerator
 import com.example.myweatherapp.data.service.api.WeatherApi
+import com.example.myweatherapp.utils.UNITS
 import io.reactivex.rxjava3.core.Observable
 
 class WeatherService {
@@ -26,9 +27,4 @@ class WeatherService {
         }
     }
 
-    companion object {
-        private const val UNITS = "metric"
-        private const val TAG = "WeatherResponse"
-        private const val HOUR = "12:00:00"
-    }
 }

@@ -8,9 +8,9 @@ import com.bumptech.glide.Glide
 import com.example.myweatherapp.R
 import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.databinding.WeatherFragmentBinding
-import com.example.myweatherapp.utils.WeatherDatesUtils.formatSimpleDate
-import com.example.myweatherapp.utils.WeatherDatesUtils.formatMilitaryTime
-import com.example.myweatherapp.utils.WeatherDatesUtils.formatHoursMinutes
+import com.example.myweatherapp.utils.WeatherStringUtils
+import java.text.SimpleDateFormat
+import java.util.*
 
 interface ItemClicked {
     fun weatherClicked(date: String)
@@ -54,9 +54,12 @@ class WeatherAdapter(
                         )
                     }"
                 if (item == null) {
-                    date.text =
-                        formatHoursMinutes.format(formatMilitaryTime.parse(weatherItem.date))
+                    val formatMilitaryTime = SimpleDateFormat(WeatherStringUtils.JSON_MILITARY_TIME_PATTERN, Locale.ENGLISH)
+                    val formatHoursMinutes = SimpleDateFormat(WeatherStringUtils.JSON_HOURS_MINUTES_PATTERN, Locale.ENGLISH)
+                    date.text = formatHoursMinutes.format(formatMilitaryTime.parse(weatherItem.date))
                 } else {
+                    val formatMilitaryTime = SimpleDateFormat(WeatherStringUtils.JSON_MILITARY_TIME_PATTERN, Locale.ENGLISH)
+                    val formatSimpleDate = SimpleDateFormat(WeatherStringUtils.JSON_SIMPLE_DATE_PATTERN)
                     date.text = formatSimpleDate.format(formatMilitaryTime.parse(weatherItem.date))
                 }
                 Glide.with(itemView.context)

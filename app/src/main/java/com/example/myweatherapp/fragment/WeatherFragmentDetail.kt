@@ -11,9 +11,10 @@ import com.example.myweatherapp.mvp.contract.MyWeatherAppDetailContract
 import com.example.myweatherapp.mvp.model.MyWeatherAppDetailModel
 import com.example.myweatherapp.mvp.presenter.MyWeatherAppDetailPresenter
 import com.example.myweatherapp.mvp.view.MyWeatherAppDetailView
-import com.example.myweatherapp.utils.WeatherDatesUtils.formatSimpleDate
-import com.example.myweatherapp.utils.WeatherDatesUtils.formatMilitaryTime
+import com.example.myweatherapp.utils.WeatherStringUtils
 import com.example.myweatherapp.utils.WeatherStringUtils.EMPTY_STRING
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 
 class WeatherFragmentDetail : DialogFragment() {
@@ -43,8 +44,9 @@ class WeatherFragmentDetail : DialogFragment() {
     }
 
     private fun bindViews() {
-        binding.fragmentDate.text =
-            formatSimpleDate.format(formatMilitaryTime.parse(arguments?.getString(DATE)))
+        val formatMilitaryTime = SimpleDateFormat(WeatherStringUtils.JSON_MILITARY_TIME_PATTERN, Locale.ENGLISH)
+        val formatSimpleDate = SimpleDateFormat(WeatherStringUtils.JSON_SIMPLE_DATE_PATTERN)
+        binding.fragmentDate.text = formatSimpleDate.format(formatMilitaryTime.parse(arguments?.getString(DATE)))
         binding.buttonClose.setOnClickListener { dismiss() }
     }
 

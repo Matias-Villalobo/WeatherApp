@@ -1,6 +1,5 @@
 package com.example.myweatherapp.data.service
 
-import android.util.Log
 import com.example.myweatherapp.BuildConfig
 import com.example.myweatherapp.data.entity.DaysWeather
 import com.example.myweatherapp.data.mapper.mapToWeatherDataList
@@ -27,8 +26,6 @@ class WeatherService {
     }
 
     companion object {
-        private const val UNITS = "metric"
-        private const val TAG = "WeatherResponse"
-        private const val HOUR = "12:00:00"
+        const val UNITS = "metric"
     }
 }

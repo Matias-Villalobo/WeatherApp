@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.core.Observable
 class MyWeatherAppModel(private val weatherService: WeatherService) :
     MyWeatherAppContract.MyWeatherAppModel {
 
-    override fun getData(city: String): Observable <List<DaysWeather>> =
+    override fun getData(city: String): Observable<List<DaysWeather>> =
         weatherService.getWeekWeather(city)
 
     override var weekWeatherList = emptyList<DaysWeather>()
@@ -19,6 +19,7 @@ class MyWeatherAppModel(private val weatherService: WeatherService) :
             it.date.contains(HOUR)
         }
     }
+
     companion object {
         private const val HOUR = "12:00:00"
     }

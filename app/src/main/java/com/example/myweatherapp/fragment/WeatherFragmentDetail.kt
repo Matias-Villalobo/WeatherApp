@@ -14,7 +14,7 @@ import com.example.myweatherapp.mvp.view.MyWeatherAppDetailView
 import com.example.myweatherapp.utils.WeatherStringUtils
 import com.example.myweatherapp.utils.WeatherStringUtils.EMPTY_STRING
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import kotlin.collections.ArrayList
 
 class WeatherFragmentDetail : DialogFragment() {

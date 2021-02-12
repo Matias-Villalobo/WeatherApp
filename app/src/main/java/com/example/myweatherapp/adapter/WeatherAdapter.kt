@@ -53,14 +53,12 @@ class WeatherAdapter(
                             R.string.celsius
                         )
                     }"
-
                 val formatMilitaryTime = SimpleDateFormat(WeatherStringUtils.JSON_MILITARY_TIME_PATTERN, Locale.ENGLISH)
-                val formatHoursMinutes = SimpleDateFormat(WeatherStringUtils.JSON_HOURS_MINUTES_PATTERN, Locale.ENGLISH)
-                val formatSimpleDate = SimpleDateFormat(WeatherStringUtils.JSON_SIMPLE_DATE_PATTERN)
-
                 if (item == null) {
+                    val formatHoursMinutes = SimpleDateFormat(WeatherStringUtils.JSON_HOURS_MINUTES_PATTERN, Locale.ENGLISH)
                     date.text = formatHoursMinutes.format(formatMilitaryTime.parse(weatherItem.date))
                 } else {
+                    val formatSimpleDate = SimpleDateFormat(WeatherStringUtils.JSON_SIMPLE_DATE_PATTERN)
                     date.text = formatSimpleDate.format(formatMilitaryTime.parse(weatherItem.date))
                 }
                 Glide.with(itemView.context)

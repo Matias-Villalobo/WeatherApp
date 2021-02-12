@@ -1,6 +1,7 @@
 package com.example.myweatherapp.mvp.view
 
 import android.app.Activity
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,4 +33,12 @@ class MyWeatherAppView(activity: Activity, private var binding: ActivityMainBind
                 context?.getString(R.string.weather_fragment_more_info)
             )
     }
+    override fun showLoading() {
+        binding.loadingBar.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        binding.loadingBar.visibility = View.GONE
+    }
+
 }

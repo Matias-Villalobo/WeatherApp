@@ -16,6 +16,9 @@ interface MyWeatherAppContract {
         fun showData(data: List<DaysWeather>, itemClicked: ItemClicked)
         fun showError()
         fun showFragmentDataDetails(date: String, weatherList: List<DaysWeather>)
+        fun showLoading()
+        fun hideLoading()
+
     }
 
     interface MyWeatherAppPresenter {

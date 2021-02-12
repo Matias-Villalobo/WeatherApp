@@ -10,4 +10,5 @@
     <dimen name="title_text_size">40dp</dimen>
     <dimen name="actual_sensation_text_size">10sp</dimen>
     <dimen name="fragment_dimen_text_size">300dp</dimen>
+    <dimen name="loading_bar_text_height">100dp</dimen>
 </resources>

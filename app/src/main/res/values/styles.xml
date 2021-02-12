@@ -20,6 +20,11 @@
         <item name="android:textSize">@dimen/actual_temp_text_size</item>
     </style>
 
+    <style name="LoadingBarStyle">
+        <item name="android:layout_height">@dimen/loading_bar_text_height</item>
+        <item name="android:indeterminateTint">@color/black</item>
+    </style>
+
     <style name="Sensation" parent="BaseTextStyle">
         <item name="android:textSize">@dimen/actual_sensation_text_size</item>
     </style>

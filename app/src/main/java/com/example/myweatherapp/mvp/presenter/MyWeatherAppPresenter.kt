@@ -12,13 +12,21 @@ class MyWeatherAppPresenter(
     MyWeatherAppContract.MyWeatherAppPresenter {
 
     override fun getWeatherForecast(item: ItemClicked) {
+        view.showLoading()
         model.getData(CITY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { forecasts -> view.showData(model.getDataAllDays(forecasts), item) },
-                { view.showError() })
+                { forecasts ->
+                    view.showData(model.getDataAllDays(forecasts), item)
+                    view.hideLoading()
+                },
+                {
+                    view.showError()
+                    view.hideLoading()
+                })
     }
+
 
     override fun weatherDayClicked(date: String) {
         view.showFragmentDataDetails(date, model.weekWeatherList)

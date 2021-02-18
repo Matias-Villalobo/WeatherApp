@@ -27,7 +27,6 @@ class MyWeatherAppPresenter(
                 })
     }
 
-
     override fun weatherDayClicked(date: String) {
         view.showFragmentDataDetails(date, model.weekWeatherList)
     }

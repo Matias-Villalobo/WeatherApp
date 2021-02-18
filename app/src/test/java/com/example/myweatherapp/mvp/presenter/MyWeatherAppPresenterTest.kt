@@ -40,7 +40,6 @@ class MyWeatherAppPresenterTest {
     @Before
     fun setUp() {
         presenter = MyWeatherAppPresenter(model, view)
-        model = MyWeatherAppModel(WeatherService())
         modelDetail = MyWeatherAppDetailModel()
         testObserver = TestObserver()
     }
@@ -65,6 +64,7 @@ class MyWeatherAppPresenterTest {
 
     @Test
     fun `get weather forecast from a service`() {
+        model = MyWeatherAppModel(WeatherService())
         model.getData(CITY).subscribe(testObserver)
         testObserver.onComplete()
         testObserver.assertNoErrors()

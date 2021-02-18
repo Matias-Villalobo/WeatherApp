@@ -11,11 +11,12 @@ import org.junit.Test
 
 class MyWeatherAppDetailPresenterTest {
     private val view: MyWeatherAppDetailView = mock()
-    private val model: MyWeatherAppDetailModel = mock()
+    private lateinit var  model: MyWeatherAppDetailModel
     private lateinit var presenter: MyWeatherAppDetailPresenter
 
     @Before
     fun setUp() {
+        model = MyWeatherAppDetailModel()
         presenter = MyWeatherAppDetailPresenter(model, view)
     }
 

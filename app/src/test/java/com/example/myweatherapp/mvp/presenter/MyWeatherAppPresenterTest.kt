@@ -29,7 +29,6 @@ import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
 
 class MyWeatherAppPresenterTest {
-
     private var service: WeatherService = mock()
     private var model = MyWeatherAppModel(service)
     private val view: MyWeatherAppView = mock()
@@ -77,21 +76,19 @@ class MyWeatherAppPresenterTest {
     @Test
     fun `get weather forecast for the week`() {
         val list = model.getDataAllDays(weatherList)
-        Assert.assertEquals(Utils.NUMBER_ONE, list.size)
+        Assert.assertEquals(Utils.NUMBER_ONE, model.getDataAllDays(weatherList).size)
     }
 
     @Test
     fun `get the weather forecast when you press a day`() {
         val result = modelDetail.getDataOnlyOneDay(weatherList, Utils.DATE_THREE)
-        Assert.assertEquals(Utils.NUMBER_TWO, result.size)
+        Assert.assertEquals(Utils.NUMBER_TWO, modelDetail.getDataOnlyOneDay(weatherList, Utils.DATE_THREE).size)
     }
 
     @Test
     fun `get the weather forecast when you press a day (empty list)`() {
         modelDetail.getDataOnlyOneDay(Utils.weatherListEmpty, Utils.DATE_THREE)
-        Assert.assertEquals(
-            NUMBER_ZERO,
-            modelDetail.getDataOnlyOneDay(Utils.weatherListEmpty, Utils.DATE_THREE).size
+        Assert.assertEquals(NUMBER_ZERO, modelDetail.getDataOnlyOneDay(Utils.weatherListEmpty, Utils.DATE_THREE).size
         )
     }
 
